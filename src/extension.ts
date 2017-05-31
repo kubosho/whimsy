@@ -1,9 +1,13 @@
 'use strict';
+
 import {
     ExtensionContext,
     commands,
     workspace,
 } from 'vscode';
+
+const transitionTime = 1000 * 60 * 30;
+let timerId;
 
 function changeColorTheme() {
     const config = workspace.getConfiguration('workbench');
@@ -13,20 +17,17 @@ function changeColorTheme() {
         'Default Dark+', 'Monokai', 'Monokai Dimmed', 'Solarized Dark', 'Abyss'
     ];
     const themeRandomIndex = Math.floor(Math.random() * 10);
-    config.update('colorTheme', themes[themeRandomIndex], true)
-        .then(() => {
-            setTimeout(changeColorTheme, 1000 * 60 * 30);
-        });
+    config.update('colorTheme', themes[themeRandomIndex], true);
 }
 
 export function activate(context: ExtensionContext) {
     let disposable = commands.registerCommand('extension.whimsy', () => {
-        setTimeout(changeColorTheme, 1000 * 60 * 30);
+        timerId = setInterval(changeColorTheme, transitionTime);
     });
 
-    setTimeout(changeColorTheme, 1000 * 60 * 30);
     context.subscriptions.push(disposable);
 }
 
 export function deactivate() {
+    clearInterval(timerId);
 }
