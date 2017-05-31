@@ -5,15 +5,11 @@ import {
     commands,
     workspace,
 } from 'vscode';
-import shuffle from 'lodash.shuffle';
+import * as shuffle from 'lodash.shuffle';
 
-const transitionTime = 1000 * 60 * 30;
-let timerId;
-
-function changeColorTheme() {
-    const config = workspace.getConfiguration('workbench');
-    const currentTheme = config.get('colorTheme');
-    const themes = [
+export class ColorTheme {
+    private config = workspace.getConfiguration('workbench');
+    private themes = [
         'Default Dark+',
         'Monokai',
         'Monokai Dimmed',
@@ -21,12 +17,27 @@ function changeColorTheme() {
         'Abyss',
     ];
 
-    config.update('colorTheme', shuffle(themes)[0], true);
+    getCurrentTheme(): string {
+        return <string>this.config.get('colorTheme');
+    }
+
+    rand(): string {
+        return shuffle(this.themes)[0];
+    }
+
+    update(themeName: string): void {
+        this.config.update('colorTheme', themeName, true);
+    }
 }
+
+const colorTheme = new ColorTheme();
+let timerId;
 
 export function activate(context: ExtensionContext) {
     let disposable = commands.registerCommand('extension.whimsy', () => {
-        timerId = setInterval(changeColorTheme, transitionTime);
+        timerId = setInterval(() => {
+            colorTheme.update(colorTheme.rand());
+        }, 1000 * 60 * 30);
     });
 
     context.subscriptions.push(disposable);
