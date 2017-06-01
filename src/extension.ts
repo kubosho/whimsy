@@ -8,8 +8,8 @@ import {
 import * as shuffle from 'lodash.shuffle';
 
 export class ColorTheme {
-    private config = workspace.getConfiguration('workbench');
-    private themes = [
+    private _config = workspace.getConfiguration('workbench');
+    private _themes = [
         'Default Dark+',
         'Monokai',
         'Monokai Dimmed',
@@ -18,11 +18,11 @@ export class ColorTheme {
     ];
 
     getCurrentTheme(): string {
-        return <string>this.config.get('colorTheme');
+        return <string>this._config.get('colorTheme');
     }
 
     rand(): string {
-        return shuffle(this.themes)[0];
+        return shuffle(this._themes)[0];
     }
 
     update(themeName: string): void {
