@@ -11,13 +11,13 @@ const colorTheme = new ColorTheme();
 const timer = new Timer();
 
 export function activate(context: ExtensionContext) {
-    let disposable = commands.registerCommand('extension.whimsy', () => {
+    const activate = commands.registerCommand('extension.activate', () => {
         timer.start(() => {
             colorTheme.update(colorTheme.rand());
         });
     });
 
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(activate);
 }
 
 export function deactivate() {
