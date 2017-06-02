@@ -19,6 +19,10 @@
             {
                 "command": "extension.activate",
                 "title": "Whimsy: activate"
+            },
+            {
+                "command": "extension.updateInterval",
+                "title": "Whimsy: update interval"
             }
         ]
     },
