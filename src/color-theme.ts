@@ -11,6 +11,10 @@ export class ColorTheme {
         'Abyss',
     ];
 
+    set themes(list: Array<string>) {
+        this._themes = list;
+    }
+
     getCurrentTheme(): string {
         return <string>this._config.get('colorTheme');
     }

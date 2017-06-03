@@ -24,7 +24,7 @@ export function activate(context: ExtensionContext) {
         };
 
         window.showInputBox(option)
-            .then((interval) => {
+            .then((interval: string) => {
                 const intervalValue = Number(interval);
                 if (Number.isNaN(intervalValue)) {
                     return;
@@ -38,9 +38,23 @@ export function activate(context: ExtensionContext) {
             });
     });
 
+    const updateThemeList = commands.registerCommand('extension.updateThemeList', () => {
+        const option = {
+            prompt: 'Enter theme names separated with commas.',
+        };
+
+        window.showInputBox(option)
+            .then((themes: string) => {
+                colorTheme.themes = themes
+                    .split(',')
+                    .map((theme: string) => theme.trim());
+            });
+    });
+
     context.subscriptions.push(
         activate,
         updateInterval,
+        updateThemeList,
     );
 }
 
