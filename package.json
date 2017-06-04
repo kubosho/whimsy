@@ -21,6 +21,10 @@
                 "title": "Whimsy: start"
             },
             {
+                "command": "extension.stop",
+                "title": "Whimsy: stop"
+            },
+            {
                 "command": "extension.updateInterval",
                 "title": "Whimsy: update interval"
             },

@@ -18,6 +18,10 @@ export function activate(context: ExtensionContext) {
         })
     })
 
+    const stop = commands.registerCommand('extension.stop', () => {
+        timer.stop()
+    })
+
     const updateInterval = commands.registerCommand('extension.updateInterval', async () => {
         const option = {
             prompt: 'Enter the time interval for change color theme. The unit is milliseconds.',
@@ -49,6 +53,7 @@ export function activate(context: ExtensionContext) {
 
     context.subscriptions.push(
         start,
+        stop,
         updateInterval,
         updateThemeList,
     )
