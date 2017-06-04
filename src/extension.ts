@@ -12,7 +12,7 @@ const colorTheme = new ColorTheme()
 const timer = new Timer()
 
 export function activate(context: ExtensionContext) {
-    const activate = commands.registerCommand('extension.activate', () => {
+    const start = commands.registerCommand('extension.start', () => {
         timer.start(() => {
             colorTheme.update(colorTheme.rand())
         })
@@ -48,7 +48,7 @@ export function activate(context: ExtensionContext) {
     })
 
     context.subscriptions.push(
-        activate,
+        start,
         updateInterval,
         updateThemeList,
     )

@@ -11,14 +11,14 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.activate"
+        "onCommand:extension.start"
     ],
     "main": "./out/src/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.activate",
-                "title": "Whimsy: activate"
+                "command": "extension.start",
+                "title": "Whimsy: start"
             },
             {
                 "command": "extension.updateInterval",
