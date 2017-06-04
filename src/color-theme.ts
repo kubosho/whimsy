@@ -23,7 +23,13 @@ export class ColorTheme {
     }
 
     rand(): string {
-        return shuffle(this._themes)[0];
+        this.themes = shuffle(this._themes);
+
+        if (this._themes.indexOf(this.getCurrentTheme()) === 0) {
+            this._themes.push(this._themes.shift());
+        }
+
+        return this._themes[0];
     }
 
     update(themeName: string): void {
