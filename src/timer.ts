@@ -1,17 +1,17 @@
 export class Timer {
-    private _id: NodeJS.Timer;
-    private _interval = 1000 * 60 * 30;
+    private _id: NodeJS.Timer
+    private _interval = 1000 * 60 * 30
 
     set interval(milliseconds: number) {
-        this._interval = milliseconds;
+        this._interval = milliseconds
     }
 
     start(callback: () => void): void {
-        this._id = setInterval(callback, this._interval);
+        this._id = setInterval(callback, this._interval)
     }
 
     stop(): void {
-        clearInterval(this._id);
-        this._id = null;
+        clearInterval(this._id)
+        this._id = null
     }
 }
