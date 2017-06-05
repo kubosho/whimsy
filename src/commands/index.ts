@@ -4,7 +4,11 @@ import stop from './stop'
 import updateInterval from './update-interval'
 import updateThemeList from './update-theme-list'
 
-export const startCommand = commands.registerCommand('extension.start', start)
-export const stopCommand = commands.registerCommand('extension.stop', stop)
-export const updateIntervalCommand = commands.registerCommand('extension.updateInterval', updateInterval)
-export const updateThemeListCommand = commands.registerCommand('extension.updateThemeList', updateThemeList)
+function registerCommand (name: string, func: () => void) {
+    return commands.registerCommand(`extension.${name}`, func)
+}
+
+export const startCommand = registerCommand('start', start)
+export const stopCommand = registerCommand('stop', stop)
+export const updateIntervalCommand = registerCommand('updateInterval', updateInterval)
+export const updateThemeListCommand = registerCommand('updateThemeList', updateThemeList)
