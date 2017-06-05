@@ -37,4 +37,4 @@ class ColorTheme {
     }
 }
 
-export const colorTheme = new ColorTheme();
+export const colorTheme = new ColorTheme()
