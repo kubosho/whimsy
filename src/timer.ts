@@ -1,4 +1,4 @@
-export class Timer {
+class Timer {
     private _id: NodeJS.Timer
     private _interval = 1000 * 60 * 30
 
@@ -15,3 +15,5 @@ export class Timer {
         this._id = null
     }
 }
+
+export const timer = new Timer();

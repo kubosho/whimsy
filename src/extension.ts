@@ -1,15 +1,12 @@
 'use strict'
 
-import { ColorTheme } from './color-theme'
-import { Timer } from './timer'
+import { colorTheme } from './color-theme'
+import { timer } from './timer'
 import {
     ExtensionContext,
     commands,
     window,
 } from 'vscode'
-
-const colorTheme = new ColorTheme()
-const timer = new Timer()
 
 export function activate(context: ExtensionContext) {
     const start = commands.registerCommand('extension.start', () => {

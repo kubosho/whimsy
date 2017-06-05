@@ -1,7 +1,7 @@
 import { workspace } from 'vscode'
 import * as shuffle from 'lodash.shuffle'
 
-export class ColorTheme {
+class ColorTheme {
     private _themes = [
         'Default Dark+',
         'Monokai',
@@ -36,3 +36,5 @@ export class ColorTheme {
         this.getConfig().update('colorTheme', themeName, true)
     }
 }
+
+export const colorTheme = new ColorTheme();
