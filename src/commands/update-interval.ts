@@ -1,10 +1,11 @@
 import { window } from 'vscode'
 import { colorTheme } from '../color-theme'
+import { message } from '../constants'
 import { timer } from '../timer'
 
 export default async function updateInterval () {
     const option = {
-        prompt: 'Enter the time interval for change color theme. The unit is milliseconds.',
+        prompt: message.updateInterval,
     }
     const interval: string = await window.showInputBox(option)
     const intervalValue = Number(interval)
