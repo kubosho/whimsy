@@ -19,11 +19,9 @@ class ColorTheme {
             this.getThemes().map((theme: string) => theme.trim())
         )
 
-        if (themes.indexOf(this.getCurrentTheme()) === 0) {
-            themes.push(themes.shift())
-        }
-
-        return themes[0]
+        return themes.indexOf(this.getCurrentTheme()) === 0
+            ? themes[1]
+            : themes[0]
     }
 
     update(themeName: string): void {
