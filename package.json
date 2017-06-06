@@ -30,20 +30,20 @@
             }
         ],
         "configuration": {
-          "type": "object",
-          "title": "Whimsy configuration",
-          "properties": {
-            "whimsy.themes": {
-              "default": [
-                "Default Dark+",
-                "Monokai",
-                "Monokai Dimmed",
-                "Abyss"
-              ],
-              "description": "Specifies the theme names.",
-              "type": "array"
+            "type": "object",
+            "title": "Whimsy configuration",
+            "properties": {
+                "whimsy.themes": {
+                    "default": [
+                        "Default Dark+",
+                        "Monokai",
+                        "Monokai Dimmed",
+                        "Abyss"
+                    ],
+                    "description": "Specifies the theme names.",
+                    "type": "array"
+                }
             }
-          }
         }
     },
     "scripts": {
