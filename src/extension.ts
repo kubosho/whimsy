@@ -5,7 +5,6 @@ import {
     startCommand,
     stopCommand,
     updateIntervalCommand,
-    updateThemeListCommand,
 } from './commands'
 import { timer } from './timer'
 
@@ -14,7 +13,6 @@ export function activate(context: ExtensionContext) {
         startCommand,
         stopCommand,
         updateIntervalCommand,
-        updateThemeListCommand,
     )
 }
 

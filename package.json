@@ -27,12 +27,24 @@
             {
                 "command": "extension.updateInterval",
                 "title": "Whimsy: update interval"
-            },
-            {
-                "command": "extension.updateThemeList",
-                "title": "Whimsy: update theme list"
             }
-        ]
+        ],
+        "configuration": {
+          "type": "object",
+          "title": "Whimsy configuration",
+          "properties": {
+            "whimsy.themes": {
+              "default": [
+                "Default Dark+",
+                "Monokai",
+                "Monokai Dimmed",
+                "Abyss"
+              ],
+              "description": "Specifies the theme names.",
+              "type": "array"
+            }
+          }
+        }
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",

@@ -2,38 +2,32 @@ import { workspace } from 'vscode'
 import * as shuffle from 'lodash.shuffle'
 
 class ColorTheme {
-    private _themes = [
-        'Default Dark+',
-        'Monokai',
-        'Monokai Dimmed',
-        'Solarized Dark',
-        'Abyss',
-    ]
-
-    set themes(list: Array<string>) {
-        this._themes = list
+    private getThemes(): any {
+        return workspace.getConfiguration('whimsy').get('themes')
     }
 
-    private getConfig(): any {
+    private getWorkbench(): any {
         return workspace.getConfiguration('workbench')
     }
 
     getCurrentTheme(): string {
-        return <string>this.getConfig().get('colorTheme')
+        return this.getWorkbench().get('colorTheme')
     }
 
     rand(): string {
-        this.themes = shuffle(this._themes)
+        const themes = shuffle(
+            this.getThemes().map((theme: string) => theme.trim())
+        )
 
-        if (this._themes.indexOf(this.getCurrentTheme()) === 0) {
-            this._themes.push(this._themes.shift())
+        if (themes.indexOf(this.getCurrentTheme()) === 0) {
+            themes.push(themes.shift())
         }
 
-        return this._themes[0]
+        return themes[0]
     }
 
     update(themeName: string): void {
-        this.getConfig().update('colorTheme', themeName, true)
+        this.getWorkbench().update('colorTheme', themeName, true)
     }
 }
 
