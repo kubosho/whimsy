@@ -33,6 +33,11 @@
             "type": "object",
             "title": "Whimsy configuration",
             "properties": {
+                "whimsy.interval": {
+                    "default": "30m",
+                    "description": "Specifies the time interval for change color theme.",
+                    "type": "string"
+                },
                 "whimsy.themes": {
                     "default": [
                         "Default Dark+",
