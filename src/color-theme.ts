@@ -1,22 +1,18 @@
 import { workspace } from 'vscode'
+import {
+    whimsyConfig,
+    workbenchConfig,
+} from './config'
 import * as shuffle from 'lodash.shuffle'
 
 class ColorTheme {
-    private getThemes(): any {
-        return workspace.getConfiguration('whimsy').get('themes')
-    }
-
-    private getWorkbench(): any {
-        return workspace.getConfiguration('workbench')
-    }
-
     getCurrentTheme(): string {
-        return this.getWorkbench().get('colorTheme')
+        return workbenchConfig().get('colorTheme')
     }
 
     rand(): string {
         const themes = shuffle(
-            this.getThemes().map((theme: string) => theme.trim())
+            whimsyConfig().get('themes').map((theme: string) => theme.trim())
         )
 
         return themes.indexOf(this.getCurrentTheme()) === 0
@@ -25,7 +21,7 @@ class ColorTheme {
     }
 
     update(themeName: string): void {
-        this.getWorkbench().update('colorTheme', themeName, true)
+        workbenchConfig().update('colorTheme', themeName, true)
     }
 }
 

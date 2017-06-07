@@ -1,7 +1,11 @@
-import { window } from 'vscode'
+import {
+    window,
+    workspace,
+} from 'vscode'
 import { colorTheme } from '../color-theme'
 import { message } from '../constants'
 import { timer } from '../timer'
+import { whimsyConfig } from '../config'
 
 export default async function updateInterval () {
     const option = {
@@ -14,8 +18,9 @@ export default async function updateInterval () {
         return
     }
 
+    whimsyConfig().update('interval', intervalValue, true)
+
     timer.stop()
-    timer.interval = intervalValue
     timer.start(() => {
         colorTheme.update(colorTheme.rand())
     })
