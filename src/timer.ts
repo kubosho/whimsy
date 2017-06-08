@@ -1,10 +1,12 @@
 import { whimsyConfig } from './config'
+import convertMilliseconds from './utils/convert-milliseconds'
 
 class Timer {
     private _id: NodeJS.Timer
 
     start(callback: () => void): void {
-        this._id = setInterval(callback, whimsyConfig().get('interval'))
+        const interval = convertMilliseconds(whimsyConfig().get('interval'))
+        this._id = setInterval(callback, interval)
     }
 
     stop(): void {
