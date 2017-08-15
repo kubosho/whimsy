@@ -3,8 +3,8 @@ import start from './start'
 import stop from './stop'
 import updateInterval from './update-interval'
 
-function registerCommand (name: string, func: () => void) {
-    return commands.registerCommand(`extension.${name}`, func)
+function registerCommand(name: string, func: () => void) {
+  return commands.registerCommand(`extension.${name}`, func)
 }
 
 export const startCommand = registerCommand('start', start)
